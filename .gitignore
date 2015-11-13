@@ -59,3 +59,4 @@ target/
 # self setting
 venv/
 .idea/
+application/settings.py
