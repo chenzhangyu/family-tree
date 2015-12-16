@@ -11,8 +11,8 @@ class GroupRelation(Base):
 
     id = Column(Integer, primary_key=True)
 
-    group_from_id = Column(Integer, ForeignKey("groups.id"), nullable=False)
-    group_to_id = Column(Integer, ForeignKey("groups.id"), nullable=False)
+    group_from_id = Column(Integer, ForeignKey("groups.id", ondelete="CASCADE"), nullable=False)
+    group_to_id = Column(Integer, ForeignKey("groups.id", ondelete="CASCADE"), nullable=False)
 
-    group_from = relationship("Group", foreign_keys="GroupRelation.group_from_id")
-    group_to = relationship("Group", foreign_keys="GroupRelation.group_to_id")
+    group_from = relationship("Group", foreign_keys="GroupRelation.group_from_id", passive_deletes=True)
+    group_to = relationship("Group", foreign_keys="GroupRelation.group_to_id", passive_deletes=True)

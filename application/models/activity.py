@@ -1,6 +1,6 @@
 # encoding=utf8
 
-from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy import Column, Integer, String
 from application.models import Base
 
 
@@ -10,4 +10,8 @@ class Activity(Base):
 
     id = Column(Integer, primary_key=True)
     description = Column(String(300), nullable=False)
-    year = Column(DateTime, nullable=False)
+    year = Column(Integer, nullable=False)
+
+    def __init__(self, description, year):
+        self.description = description
+        self.year = year
