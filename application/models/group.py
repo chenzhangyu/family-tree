@@ -9,7 +9,7 @@ class Group(Base):
 
     __tablename__ = "groups"
 
-    id = Column(Integer, primary_key=True)
+    group_id = Column(Integer, primary_key=True)
     group_name = Column(String(30), nullable=False)
     start_year = Column(Integer, nullable=False)
     end_year = Column(Integer, nullable=False)

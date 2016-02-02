@@ -9,10 +9,12 @@ class UserMentor(Base):
 
     __tablename__ = "user_mentor"
 
-    id = Column(Integer, primary_key=True)
+    mentor_id = Column(Integer, ForeignKey("users.user_id", ondelete="CASCADE"),
+                       nullable=False, primary_key=True, autoincrement=False)
+    mentee_id = Column(Integer, ForeignKey("users.user_id", ondelete="CASCADE"),
+                       nullable=False, primary_key=True, autoincrement=False)
 
-    mentor_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
-    mentee_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
-
-    mentor = relationship("User", foreign_keys="UserMentor.mentor_id", passive_deletes=True)
-    mentee = relationship("User", foreign_keys="UserMentor.mentee_id", passive_deletes=True)
+    mentor = relationship("User", foreign_keys="UserMentor.mentor_id",
+                          passive_deletes=True)
+    mentee = relationship("User", foreign_keys="UserMentor.mentee_id",
+                          passive_deletes=True)

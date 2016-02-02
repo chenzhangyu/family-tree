@@ -4,17 +4,17 @@ import tornado.web
 
 from tornado.options import options
 
-import application.settings
+import application.settings  # noqa
 
-from application.index.index import IndexHandler, TestHandler
+from application import fmt
 
 
 class Application(tornado.web.Application):
 
     def __init__(self):
         handlers = [
-            (r"/", IndexHandler),
-            (r"/test", TestHandler),
+            (r"/", fmt.index.IndexHandler),
+            (r"/test", fmt.index.TestHandler),
         ]
 
         application_settings = {

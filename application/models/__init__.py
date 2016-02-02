@@ -8,6 +8,7 @@ from tornado.options import options
 
 engine = create_engine(options.db_engine,
                        encoding="utf-8",
+                       echo=True,
                        convert_unicode=True)
 
 Session = scoped_session(sessionmaker(bind=engine))
@@ -21,3 +22,4 @@ from application.models.user_group import UserGroup
 from application.models.group import Group
 from application.models.user import User
 from application.models.user_mentor import UserMentor
+from application.models.inv_code import InvCode

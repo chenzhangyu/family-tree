@@ -7,8 +7,10 @@ from application.models import Base
 
 user_activity = Table("user_activity", Base.metadata,
                       Column("user_id", Integer,
-                             ForeignKey("users.id", ondelete="CASCADE"),
-                             nullable=False),
+                             ForeignKey("users.user_id", ondelete="CASCADE"),
+                             nullable=False, primary_key=True,
+                             autoincrement=False),
                       Column("activity_id", Integer,
-                             ForeignKey("activity.id", ondelete="CASCADE"),
-                             nullable=False))
+                             ForeignKey("activity.activity_id", ondelete="CASCADE"),
+                             nullable=False, primary_key=True,
+                             autoincrement=False))
